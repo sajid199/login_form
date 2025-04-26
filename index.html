@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Signup Form</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(120deg, #ffd86f, #fc6076, #8e54e9, #4facfe);
+            background-size: 300% 300%;
+            animation: gradient 15s ease infinite;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            border: none;
+            padding: 20px;
+            margin: 0 auto; /* Ensure card is centered */
+        }
+
+        .card-title {
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .card-subtitle {
+            text-align: center;
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .steps-container {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .steps-line {
+            position: absolute;
+            top: 28px;
+            left: 8%; /* Adjusted to start closer to the first step */
+            width: 84%; /* Adjusted to span across all steps */
+            height: 2px;
+            background-color: #e0e0e0;
+            z-index: 1;
+        }
+
+        .step {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            flex: 1; /* Ensure steps are evenly spaced */
+        }
+
+        .step-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            color: white;
+        }
+
+        .step-active .step-icon {
+            background-color: #e05d6f;
+        }
+
+        .step-inactive .step-icon {
+            background-color: #d9d9d9;
+        }
+
+        .step-text {
+            font-size: 14px;
+            color: #777;
+        }
+        
+        .step-active .step-text {
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .form-control {
+            border: none;
+            border-bottom: 1px solid #ddd;
+            border-radius: 0;
+            padding: 8px 0;
+            margin-bottom: 25px;
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #e05d6f;
+        }
+
+        .btn-next {
+            background: linear-gradient(to right, #fc6076, #ff9a44);
+            border: none;
+            padding: 10px 24px;
+            float: right;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-next:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(252, 96, 118, 0.4);
+        }
+
+        .form-container {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+        }
+
+        .personal-info-title {
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h2 class="card-title">Sign Up To Financial</h2>
+            <p class="card-subtitle">Fill all form field to go next step</p>
+            
+            <div class="steps-container">
+                <div class="steps-line"></div>
+                <div class="step step-active">
+                    <div class="step-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="step-text">About</div>
+                </div>
+                <div class="step step-inactive">
+                    <div class="step-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="step-text">Account</div>
+                </div>
+                <div class="step step-inactive">
+                    <div class="step-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="step-text">Ownership</div>
+                </div>
+                <div class="step step-inactive">
+                    <div class="step-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="step-text">Financing</div>
+                </div>
+            </div>
+            
+            <div class="form-container">
+                <h5 class="personal-info-title">Personal Information:</h5>
+                <form id="signupForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="firstName" placeholder="First Name">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="address" placeholder="Address Location">
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="zipCode" placeholder="Zip Code">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="tel" class="form-control" id="phoneNumber" placeholder="Phone Number">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="mt-4">
+                <button class="btn btn-next text-white">Next Step</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.querySelector('.btn-next').addEventListener('click', function() {
+            // Simple form validation
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const address = document.getElementById('address').value;
+            const zipCode = document.getElementById('zipCode').value;
+            const phoneNumber = document.getElementById('phoneNumber').value;
+            
+            if (!firstName || !lastName || !address || !zipCode || !phoneNumber) {
+                alert('Please fill in all fields to continue');
+            } else {
+                // In a real application, you would navigate to the next step here
+                alert('Form submitted successfully! Ready to move to the Account step.');
+                
+                // Example of how you might handle step navigation:
+                // document.querySelector('.step-active').classList.remove('step-active');
+                // document.querySelector('.step-active').classList.add('step-inactive');
+                // document.querySelectorAll('.step')[1].classList.remove('step-inactive');
+                // document.querySelectorAll('.step')[1].classList.add('step-active');
+            }
+        });
+    </script>
+</body>
+</html>
